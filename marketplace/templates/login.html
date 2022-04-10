@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    {% for msg in get_flashed_messages() %}
+    <div class="flash">
+        {{msg}}
+    </div>
+    {% endfor %}
+    <form method="post" action="/login">
+        <p><label>Email: </label><input type="text" name="email"></p>
+        <p><label>Password: </label><input type="text" name="psw"></p>
+        <p><input type="submit" value="Авторизация"></p>
+    </form>
+</body>
+</html>
