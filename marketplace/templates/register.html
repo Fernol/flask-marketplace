@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+    <h2>Registration</h2>
+    {% for msg in get_flashed_messages() %}
+    <div class="flash">
+        {{msg}}
+    </div>
+    {% endfor %}
+    <form method="post" action="/register">
+        <p><label>Email: </label><input type="text" name="email"></p>
+        <p><label>Password: </label><input type="text" name="psw"></p>
+        <p><label>Repeat password: </label><input type="text" name="psw2"></p>
+        <p><input type="submit" value="Registration"></p>
+    </form>
+</body>
+</html>
