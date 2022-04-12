@@ -6,6 +6,13 @@
 </head>
 <body>
     <h2>Main</h2>
-    <a href="/settings">Настройки</a>
+     {% if current_user.is_authenticated: %}
+    <p>Вход выполнен</p>
+     {% endif %}
+    <a href="/register">Регистрация</a>
+    <a href="/login">Логин</a>
+    {% if current_user.is_authenticated: %}
+    <a href="/logout">Выход</a>
+    {% endif %}
 </body>
 </html>

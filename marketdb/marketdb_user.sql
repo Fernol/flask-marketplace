@@ -39,7 +39,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `uq_mobile` (`mobile`),
   KEY `idx_user_role` (`roleId`),
   CONSTRAINT `fk_user_role` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,6 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,1,NULL,NULL,NULL,'alexey.hmelenko@gmail.com','pbkdf2:sha256:260000$WQyTLoBYQSWtPUvY$9faa7ecf0cda561b67df9913281335f646a49a2bebcdcebcd87d5a2b753fb8d4','2022-04-10 10:19:11',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-10 19:06:00
+-- Dump completed on 2022-04-12 21:04:51

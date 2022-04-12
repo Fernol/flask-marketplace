@@ -17,7 +17,7 @@ class Role(db.Model):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    roleId = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False, default=1)
+    roleId = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False, default=2)
     firstName = db.Column(db.String(50), nullable=True)
     lastName = db.Column(db.String(50), nullable=True)
     mobile = db.Column(db.Integer, nullable=True)

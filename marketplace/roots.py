@@ -2,11 +2,11 @@ import re
 
 from flask import request, redirect, render_template, url_for, flash
 from sqlalchemy import exc
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from email_validate import validate
 
-from marketplace.__init__ import app, db, login_manager
+from marketplace.__init__ import app, db
 from marketplace.ModelsDB import User
 
 
@@ -46,6 +46,9 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('psw')
@@ -53,7 +56,7 @@ def login():
             user = User.query.filter_by(email=email).first()
             if user and check_password_hash(user.passwordHash, password):
                 login_user(user)
-                return redirect(url_for('index'))
+                return redirect(request.args.get('next_page') or url_for('index'))
             else:
                 flash('Email или пароль введены некорректно')
         else:
@@ -66,12 +69,6 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
-
-@app.route('/settings', methods=['GET'])
-@login_required
-def settings():
-    return "Settings_page"
 
 
 @app.after_request
